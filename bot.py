@@ -22,11 +22,6 @@ def send_info(message):
 def send_tes(message):
  bot.reply_to(message, "ya?")
 
-def send_first(message):
-  link = "tg://openmessage?id=" + str(message.chat.id) + "&message_id=1"
-  teks = "<a href='" + link + "'>Di sini</a>"
-  bot.reply_to(message, teks)
-
 @bot.message_handler(regexp=".*")
 def send(message):
   pesan = message.text
@@ -42,9 +37,5 @@ def send(message):
   pola = "^[,./!]tes(|@zipra_bot)$"
   if re.search(pola, pesan):
     send_tes(message)
-  pola = "^[,.!/]first(|@zipra_bot)$"
-  if re.search(pola, pesan):
-    send_first(message)
-  print(message)
 
 bot.polling()
