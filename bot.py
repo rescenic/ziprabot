@@ -26,7 +26,8 @@ def image(msg):
   bot.reply_to(msg, "Ini gambar. Betul?")
 
 @bot.message_handler(content_types=['photo'])
-image(msg)
+def send_image(msg):
+  image(msg)
 
 @bot.message_handler(regexp=".*")
 def send(message):
