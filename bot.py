@@ -1,4 +1,8 @@
+from googletrans import Translator
 import telebot, re, os
+
+#Setup
+tr = Translator()
 bot = telebot.TeleBot(os.environ.get('TOKEN'), parse_mode="HTML")
 
 print("Logging Started\n")
@@ -22,14 +26,14 @@ def send_info(message):
 def send_tes(message):
   bot.reply_to(message, "ya?")
 
-def image(msg):
-  bot.reply_to(msg, "Ini gambar. Betul?")
+def send_translation(msg, reg):
+  if len(reg[1])==0 or len(reg[1])>=3:
+    bot.reply_to(msg, "Ngga ada bahasa" + reg[1])
+  else:
+    tr.translate(msg.text, reg[1])
+    bot.reply_to(msg, hasil)
 
-@bot.message_handler(content_types=['photo'])
-def send_image(msg):
-  image(msg)
-
-@bot.message_handler(regexp=".*")
+@bot.message_handler(regexp=".*", content_types=['text', 'photo', 'video'])
 def send(message):
   pesan = message.text
   pola = "^[$,.!/](start|help)(|@zipra_bot)$"
@@ -44,5 +48,8 @@ def send(message):
   pola = "^[,./!]tes(|@zipra_bot)$"
   if re.search(pola, pesan):
     send_tes(message)
+  pola = "^[,./!](tr|tl|trans|translate)(|@zipra_bot)\s+\w+"
+  if re.search(pola, pesan):
+    send_translation(message, re.split(pola, pesan))
 
 bot.polling()
