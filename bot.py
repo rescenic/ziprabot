@@ -30,7 +30,7 @@ def send_translation(msg, reg):
   if len(reg[1])==0 or len(reg[1])>=3:
     bot.reply_to(msg, "Ngga ada bahasa" + reg[1])
   else:
-    smntr = tr.translate(msg.text, dest=reg[1])
+    smntr = tr.translate(msg.reply_to_message.text, dest=reg[1])
     hasil = smntr.text
     bot.reply_to(msg, hasil)
 
@@ -54,3 +54,4 @@ def send(message):
     send_translation(message, re.split(pola, pesan))
 
 bot.polling()
+
