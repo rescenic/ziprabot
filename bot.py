@@ -27,13 +27,13 @@ def send_tes(message):
   bot.reply_to(message, "ya?")
 
 def send_translation(msg, reg):
-  if len(reg[3])==0 or len(reg[3])>=3:
-    bot.reply_to(msg, "Ngga ada bahasa" + reg[3])
-  else:
+  try:
     smntr = tr.translate(msg.reply_to_message.text, dest=reg[3])
     hasil = smntr.text
     bot.reply_to(msg, hasil)
-
+  except:
+    pesan = "Ups, tidak ada kode bahasa: <code>" + reg[3] + "</code>. Kalau mau tau kode bahasa, coba cek <a href='https://www.google.com'>di sini</a> deh."
+    bot.reply_to(msg, pesan)
 @bot.message_handler(regexp=".*", content_types=['text', 'photo', 'video'])
 def send(message):
   pesan = message.text
