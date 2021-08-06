@@ -30,7 +30,8 @@ def send_translation(msg, reg):
   if len(reg[1])==0 or len(reg[1])>=3:
     bot.reply_to(msg, "Ngga ada bahasa" + reg[1])
   else:
-    tr.translate(msg.text, reg[1])
+    smntr = tr.translate(msg.text, reg[1])
+    hasil = smntr.text
     bot.reply_to(msg, hasil)
 
 @bot.message_handler(regexp=".*", content_types=['text', 'photo', 'video'])
