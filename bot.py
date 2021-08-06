@@ -1,8 +1,8 @@
 import telebot, re, os
 bot = telebot.TeleBot(os.environ.get('TOKEN'), parse_mode="HTML")
- 
+
 print("Logging Started\n")
- 
+
 # Some strings
 start = "Halo, perkenalkan namaku " + bot.get_me().first_name + ".\nSaya masih dalam pengembangan oleh @Pra210906"
 
@@ -18,9 +18,15 @@ def send_pong(message):
 def send_info(message):
   ingfo = "<b>Info Pengguna</b>\n\n👤 ID Pengguna: <code>"+str(message.from_user.id)+"</code>\n🙋 Nama depan: "+message.from_user.first_name+"\n💁🏼 Nama Belakang: "+message.from_user.last_name+"\n🤡 Username: @"+message.from_user.username+"\n🔗 Link: <a href='tg://user?id="+str(message.from_user.id)+"'>link</a>"
   bot.reply_to(message, ingfo)
- 
+
 def send_tes(message):
- bot.reply_to(message, "ya?")
+  bot.reply_to(message, "ya?")
+
+def image(msg):
+  bot.reply_to(msg, "Ini gambar. Betul?")
+
+@bot.message_handler(content_types=['photo'])
+image(msg)
 
 @bot.message_handler(regexp=".*")
 def send(message):
