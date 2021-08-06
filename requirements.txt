@@ -1,4 +1,1 @@
-django
-gunicorn
-django-heroku
 pyTelegramBotAPI
