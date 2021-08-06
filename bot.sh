@@ -1,3 +1,2 @@
-pip3 install -Uv pip pyTelegramBotAPI request
-
+echo ---Starting Bot---
 python3 bot.py
