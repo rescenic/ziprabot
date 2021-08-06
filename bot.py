@@ -28,7 +28,7 @@ def send_tes(message):
 
 def send_translation(msg, reg):
   if len(reg[1])==0 or len(reg[1])>=3:
-    bot.reply_to(msg, "Ngga ada bahasa" + reg[1])
+    bot.reply_to(msg, "Ngga ada bahasa" + reg[3])
   else:
     smntr = tr.translate(msg.reply_to_message.text, dest=reg[1])
     hasil = smntr.text
@@ -49,7 +49,7 @@ def send(message):
   pola = "^[,./!]tes(|@zipra_bot)$"
   if re.search(pola, pesan):
     send_tes(message)
-  pola = "^[,./!](tr|tl|trans|translate)(|@zipra_bot)\s+\w+"
+  pola = "^[,./!](tr|tl|trans|translate)(|@zipra_bot)\s+(\w+)"
   if re.search(pola, pesan):
     send_translation(message, re.split(pola, pesan))
 
