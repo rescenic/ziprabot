@@ -1,1 +1,1 @@
-web: bash bot.sh
+worker: bash bot.sh
