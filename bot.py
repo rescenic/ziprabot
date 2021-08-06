@@ -27,10 +27,10 @@ def send_tes(message):
   bot.reply_to(message, "ya?")
 
 def send_translation(msg, reg):
-  if len(reg[1])==0 or len(reg[1])>=3:
+  if len(reg[3])==0 or len(reg[3])>=3:
     bot.reply_to(msg, "Ngga ada bahasa" + reg[3])
   else:
-    smntr = tr.translate(msg.reply_to_message.text, dest=reg[1])
+    smntr = tr.translate(msg.reply_to_message.text, dest=reg[3])
     hasil = smntr.text
     bot.reply_to(msg, hasil)
 
