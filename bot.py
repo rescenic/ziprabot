@@ -37,7 +37,7 @@ def send_translation(msg, reg):
     bot.reply_to(msg, pesan)
 
 def send_help(msg, reg):
-  ups = str(reg[2])
+  ups = str(reg[3])
   if msg.chat.type != "private":
     bot.reply_to(msg, "Hola, PM saya saja kalau ingin melihat bantuan ya...")
   elif ups == "":
@@ -46,7 +46,7 @@ def send_help(msg, reg):
     try:
       bot.reply_to(msg, get_help(ups))
     except:
-      bot.reply_to(msg, "Ngga ada bantuan buat <code>" + ups + "</code>. Mungkin perintah itu tidak tersedia atau kamu yang salah ketik 🤔"
+      bot.reply_to(msg, "Ngga ada bantuan buat <code>" + ups + "</code>. Mungkin perintah itu tidak tersedia atau kamu yang salah ketik 🤔")
 
 @bot.message_handler(regexp=".*", content_types=['text', 'photo', 'video'])
 def send(message):
@@ -63,10 +63,10 @@ def send(message):
   pola = "^[,./!]tes(|@zipra_bot)$"
   if re.search(pola, pesan):
     send_tes(message)
-  pola = "^[,./!](tr|tl|trans|translate)(|@zipra_bot)\s+(\w+)$"
+  pola = "^[,./!](tr|tl|trans|translate)(|@zipra_bot)\s+(\w+)"
   if re.search(pola, pesan):
     send_translation(message, re.split(pola, pesan))
-  pola = "^[,./!]help(|@zipra_bot)\s+(\w+)$"
+  pola = "^[,./!]help(|@zipra_bot)\s{0,}(\w{0,})"
   if re.search(pola, pesan):
     send_help(message, re.split(pola, pesan))
 
