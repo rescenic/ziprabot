@@ -41,7 +41,7 @@ def send_help(msg, reg):
   if msg.chat.type != "private":
     bot.reply_to(msg, "Hola, PM saya saja kalau ingin melihat bantuan ya...")
   elif ups == "":
-    bot.send_message(msg.chat.id, help)
+    bot.send_message(msg.chat.id, bantu)
   else:
     try:
       bot.reply_to(msg, get_help(ups))
