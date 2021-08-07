@@ -37,7 +37,7 @@ def send_translation(msg, reg):
     bot.reply_to(msg, pesan)
 
 def send_help(msg, reg):
-  ups = str(reg[3])
+  ups = str(reg[2])
   if msg.chat.type != "private":
     bot.reply_to(msg, "Hola, PM saya saja kalau ingin melihat bantuan ya...")
   elif ups == "":
