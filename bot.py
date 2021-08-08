@@ -33,7 +33,7 @@ def send_translation(msg, reg):
         if msg.reply_to_message.text != None:
             teks = msg.reply_to_message.text
         else:
-            teks = msg.reply_to_message.caption
+            teks = msg.caption
     try:
         smntr = tr.translate(teks, dest=reg[3])
         hasil = "Diterjemahkan dari <code>" + smntr.src + "</code>\n\n" + smntr.text + "</code>"
