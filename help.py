@@ -1,8 +1,9 @@
 #Strings
-ping = "Perintah: <code>/ping</code>\nPola: <code>^[,./!]ping(|@zipra_bot)$</code>\n\nUntuk mengecek apakah botnya aktif atau tidak."
+ping = "Perintah: <code>/ping</code>\n\nUntuk mengecek apakah botnya aktif atau tidak."
+translate_string = "Perintah: <code>/tr /tl /trans /translate</code>\n\nReply ke suatu pesan untuk mentranslate teks. Info tentang list kode bahasa <a href='https://www.google.com'>di sini</a>\n\nContoh: /tr en"
 
 #list
-list_help={'ping': ping}
+list_help={'ping': ping, 'translate': translate_string}
 
 #def
 def get_help(hlp):
