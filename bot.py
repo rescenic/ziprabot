@@ -29,8 +29,8 @@ def send_tes(message):
 
 def send_translation(msg, reg):
     print(msg)
-    if msg.reply_to_message:
-        if msg.reply_to_message.text:
+    if msg.reply_to_message != None:
+        if msg.reply_to_message.text != None:
             teks = msg.reply_to_message.text
         else:
             teks = msg.reply_to_message.caption
