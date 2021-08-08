@@ -34,7 +34,7 @@ def send_translation(msg, reg):
         else:
             teks = msg.reply_to_message.caption
     try:
-        smntr = tr.translate(msg.reply_to_message.text, dest=reg[3])
+        smntr = tr.translate(teks, dest=reg[3])
         hasil = "Diterjemahkan dari <code>" + smntr.src + "</code>\n\n" + smntr.text + "</code>"
         bot.reply_to(msg, hasil)
     except:
