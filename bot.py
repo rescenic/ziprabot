@@ -28,6 +28,7 @@ def send_tes(message):
     bot.reply_to(message, "ya?")
 
 def send_translation(msg, reg):
+    print(msg)
     if msg.reply_to_message:
         if msg.reply_to_message.text:
             teks = msg.reply_to_message.text
