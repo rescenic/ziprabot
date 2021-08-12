@@ -24,9 +24,6 @@ def send_info(message):
     ingfo = "<b>Info Pengguna</b>\n\n👤 ID Pengguna: <code>"+str(message.from_user.id)+"</code>\n🙋 Nama depan: "+message.from_user.first_name+"\n💁🏼 Nama Belakang: "+message.from_user.last_name+"\n🤡 Username: @"+message.from_user.username+"\n🔗 Link: <a href='tg://user?id="+str(message.from_user.id)+"'>link</a>"
     bot.reply_to(message, ingfo)
 
-def send_tes(message):
-    bot.reply_to(message, "ya?")
-
 def send_translation(msg, reg):
     print(msg)
     if msg.reply_to_message != None:
@@ -39,7 +36,7 @@ def send_translation(msg, reg):
         hasil = "Diterjemahkan dari <code>" + smntr.src + "</code>\n\n" + smntr.text + "</code>"
         bot.reply_to(msg, hasil)
     except:
-        pesan = "Ups, tidak ada kode bahasa: <code>" + reg[3] + "</code>. Kalau mau tau kode bahasa, coba cek <a href='https://www.google.com'>di sini</a> deh."
+        pesan = "Ups, tidak ada kode bahasa: <code>" + reg[3] + "</code>. Kalau mau tau kode bahasa, coba cek <a href='https://telegra.ph/kode-kode-bahasa-08-09'>di sini</a> deh."
         bot.reply_to(msg, pesan)
 
 def send_help(msg, reg):
@@ -66,9 +63,6 @@ def send(message):
     pola = "^[,.!/]info(|@zipra_bot)$"
     if re.search(pola, pesan):
         send_info(message)
-    pola = "^[,./!]tes(|@zipra_bot)$"
-    if re.search(pola, pesan):
-        send_tes(message)
     pola = "^[,./!](tr|tl|trans|translate)(|@zipra_bot)\s+(\w+)"
     if re.search(pola, pesan):
         send_translation(message, re.split(pola, pesan))
