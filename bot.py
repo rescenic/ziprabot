@@ -41,6 +41,6 @@ def handler(msg):
         ping_handler(msg)
     pola = "^[,./!](tl|tr|trans|translate)(|@zipra_bot)\s+(.{2,5})$"
     if reg(pola, pesan):
-        translate_handler(msg, res(pola))
+        translate_handler(msg, res(pola, pesan))
 
 bot.polling()
