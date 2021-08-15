@@ -12,7 +12,6 @@ languages_code = ['auto', 'af', 'sq', 'am', 'ar', 'hy', 'az', 'eu', 'be', 'bn', 
 start = "Halo, perkenalkan namaku " + bot.get_me().first_name + ".\nSaya masih dalam pengembangan oleh @Pra210906\n\nKetik /help untuk melihat bantuan"
 bantu = "Bantuan tersedia:\n\n<code>ping, translate</code>\n\nKamu bisa menggunakan titik(.), koma(,), garing(/), dan seru(!)."
 
-<<<<<<< HEAD
 def start_handler(msg):
     if msg.chat.type != "private":
         bot.reply_to(msg, "Ya, PM saya aja kalo pengen liat perintah yang tersedia")
