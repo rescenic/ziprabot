@@ -43,7 +43,7 @@ def bc_handler(msg, rex):
 
 def ud_handler_extra(hasil, ln, lists):
     for i in range(ln):
-        hasil += "<b>DEFINITION #"+str(i+1)+"</b>:\n"+lists[i].get("definition")+"\n\n<b>EXAMPLE</b>:\n"+lists[i].get("example")+"\n\n\n"
+        hasil += "<a href='" + lists[i].get("permalink") + "'><b>DEFINITION #"+str(i+1)+"</b></a>:\n"+lists[i].get("definition")+"\n\n<b>EXAMPLE</b>:\n"+lists[i].get("example")+"\n\n\n"
     return hasil
 
 def ud_handler(msg, rex):
