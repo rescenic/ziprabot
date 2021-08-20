@@ -25,14 +25,14 @@ bot.send_message(LOG_CHANNEL, "@zipra_bot started successfully!")
 # function handlers
 def start_handler(msg):
     if msg.chat.type != "private":
-        return 'bot.reply_to(msg, "Ya, PM saya aja kalo pengen liat perintah yang tersedia")'
+        bot.reply_to(msg, "Ya, PM saya aja kalo pengen liat perintah yang tersedia")
 
 def ping_handler(msg):
     waktu_awal = datetime.utcfromtimestamp(int(msg.date))
     pesan = bot.reply_to(msg, "<b>PONG!</b>")
     waktu_akhir = datetime.now()
     total_waktu = waktu_akhir - waktu_awal
-    hasil = "<b>PONG!</b>\nWaktu respon <code>" + str(total_waktu.total_seconds()) + "</code> detik"
+    hasil = "<b>PONG!</b>\n\n⌛️<code>" + str(total_waktu.total_seconds()) + "</code> detik"
     bot.edit_message_text(hasil, msg.chat.id, pesan.message_id)
 
 def translate_handler(msg, rex):
