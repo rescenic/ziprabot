@@ -77,6 +77,22 @@ def ud_handler(msg, rex):
         hasil = ud_handler_extra(hasil, length, lists)
         bot.reply_to(msg, hasil)
 
+def adminlist_handler(msg):
+    chat_id = msg.chat.id
+    result = bot.reply_to(msg, "Mengloading....")
+    isi = bot.get_chat_administrators(chat_id)
+    hasil = "Daftar admin di grup <code>" + msg.chat.title + "</code>\n\n"
+    for i in isi:
+        nama = str(i.user.first_name)
+        status = i.status
+        if i.custom_title == None:
+            custom_title = "Admin"
+        else:
+            custom_title = i.custom_title
+        hasil += nama + " sebagai <b>" + status + "</b> [<code>" + custom_title + "</code>]\n"
+    bot.edit_message_text(hasil, chat_id, result.message_id)
+        
+
 #message handlers
 @bot.message_handler(regexp=".+", content_types=['text', 'photo', 'video', 'sticker'])
 def handler(msg):
@@ -97,6 +113,9 @@ def handler(msg):
         pola = r"^[,./!]ud\s+(.+)"
         if reg(pola, pesan, i):
             ud_handler(msg, res(pola, pesan))
+        pola = r"^[,./!]adminlist$"
+        if reg(pola, pesan, i):
+            adminlist_handler(msg)
     except Exception as e:
         bot.send_message(msg.chat.id, "<code>" + str(e) + "</code>")
 
