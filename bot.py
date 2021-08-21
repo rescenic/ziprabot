@@ -7,7 +7,6 @@ UD_API = "http://api.urbandictionary.com/v0/define?term={}"
 i = re.IGNORECASE
 reg = re.search
 res = re.split
-t = telebot.TeleBot(os.environ.get('TOKEN'), parse_mode="HTML")
 tr = Translator().translate
 bot = telebot.TeleBot(os.environ.get('TOKEN'), parse_mode="HTML")
 languages_code = ['auto', 'af', 'sq', 'am', 'ar', 'hy', 'az', 'eu', 'be', 'bn', 'bs', 'bg', 'ca', 'ceb', 'ny', 'zh-cn', 'zh-tw', 'co', 'hr', 'cs', 'da', 'nl', 'en', 'eo', 'et', 'tl', 'fi', 'fr', 'fy', 'gl', 'ka', 'de', 'el', 'gu', 'ht', 'ha', 'haw', 'iw', 'hi', 'hmn', 'hu', 'is', 'ig', 'id', 'ga', 'it', 'ja', 'jw', 'kn', 'kk', 'km', 'ko', 'ku', 'ky', 'lo', 'la', 'lv', 'lt', 'lb', 'mk', 'mg', 'ms', 'ml', 'mt', 'mi', 'mr', 'mn', 'my', 'ne', 'no', 'ps', 'fa', 'pl', 'pt', 'pa', 'ro', 'ru', 'sm', 'gd', 'sr', 'st', 'sn', 'sd', 'si', 'sk', 'sl', 'so', 'es', 'su', 'sw', 'sv', 'tg', 'ta', 'te', 'th', 'tr', 'uk', 'ur', 'uz', 'vi', 'cy', 'xh', 'yi', 'yo', 'zu']
@@ -81,7 +80,7 @@ def adminlist_handler(msg):
     chat_id = msg.chat.id
     result = bot.reply_to(msg, "Mengloading....")
     isi = bot.get_chat_administrators(chat_id)
-    hasil = "Daftar admin di grup <code>" + msg.chat.title + "</code>\n\n"
+    hasil = "❗️Anggota di <b>" + msg.chat.title + "</b>❗️\n"
     for i in isi:
         nama = str(i.user.first_name)
         status = i.status
@@ -89,10 +88,11 @@ def adminlist_handler(msg):
             custom_title = "Admin"
         else:
             custom_title = i.custom_title
-        hasil += nama + " sebagai <b>" + status + "</b> [<code>" + custom_title + "</code>]\n"
+        hasil += "✅ " + nama + " sebagai <b>" + status + "</b> [<code>" + custom_title + "</code>]\n"
+
+    hasil += "\n<b>🔰 Jumlah anggota</b> : " + str(bot.get_chat_members_count(chat_id))
     bot.edit_message_text(hasil, chat_id, result.message_id)
         
-
 #message handlers
 @bot.message_handler(regexp=".+", content_types=['text', 'photo', 'video', 'sticker'])
 def handler(msg):
@@ -117,6 +117,7 @@ def handler(msg):
         if reg(pola, pesan, i):
             adminlist_handler(msg)
     except Exception as e:
-        bot.send_message(msg.chat.id, "<code>" + str(e) + "</code>")
+        bot.send_message(msg.chat.id, "<code>"+str(e)+"</code>")
+
 
 bot.polling()
