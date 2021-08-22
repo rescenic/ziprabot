@@ -3,7 +3,7 @@
   "description": "Telegram Bot that managing some groups",
   "image": "heroku/python",
   "repository": "https://github.com/heroku/python-getting-started",
-  "keywords": ["python", "django" ],
+  "keywords": ["python"],
   "addons": [],
   "env": {
     "TOKEN": {
