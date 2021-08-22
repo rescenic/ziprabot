@@ -16,6 +16,7 @@ Jalankan bot
 
 ```sh
 $ pip install -Ur requirements.txt
+$ source .env
 $ python bot.py
 ```
 
