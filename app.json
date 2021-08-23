@@ -6,9 +6,8 @@
   "keywords": ["python", "django" ],
   "addons": [],
   "env": {
-    "SECRET_KEY": {
-      "description": "The secret key for the Django application.",
-      "generator": "secret"
+    "TOKEN": {
+      "description": "Bot TOKEN"
     }
   },
   "environments": {
