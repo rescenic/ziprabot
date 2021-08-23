@@ -1,45 +1,41 @@
-# Python: Getting Started
+# Ziprabot
 
-A barebones Django app, which can easily be deployed to Heroku.
+Sebuah proyek bot telegram yang menggunakan library [pyTelegramBotAPI](https://github.com/eternnoir/pyTelegramBotAPI)
 
-This application supports the [Getting Started with Python on Heroku](https://devcenter.heroku.com/articles/getting-started-with-python) article - check it out.
+## Menjalankan secara local
 
-## Running Locally
-
-Make sure you have Python 3.9 [installed locally](https://docs.python-guide.org/starting/installation/). To push to Heroku, you'll need to install the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli), as well as [Postgres](https://devcenter.heroku.com/articles/heroku-postgresql#local-setup).
+Pastikan kamu sudah menginstall [Python 3.9](https://docs.python-guide.org/starting/installation/) dan git CLI. Tutorial ini bisa mencakup di Linux, macOS, Windows, dan Android (Termux)
 
 ```sh
-$ git clone https://github.com/heroku/python-getting-started.git
-$ cd python-getting-started
+$ git clone https://github.com/ridhwan-aziz/ziprabot.git
+$ cd ziprabot
+```
+Lalu, buat bot di [@BotFather](https://t.me/BotFather). Lalu isi TOKEN di .env
 
-$ python3 -m venv getting-started
-$ pip install -r requirements.txt
+Jalankan bot
 
-$ createdb python_getting_started
-
-$ python manage.py migrate
-$ python manage.py collectstatic
-
-$ heroku local
+```sh
+$ pip install -Ur requirements.txt
+$ python bot.py
 ```
 
-Your app should now be running on [localhost:5000](http://localhost:5000/).
+## Deploy ke Heroku
 
-## Deploying to Heroku
+Khusus pengguna termux, install termux melalui nodejs
 
 ```sh
-$ heroku create
+$ pkg update -y
+$ pkg install nodejs
+$ npm i -g heroku
+```
+Cara deploy
+
+```sh
+$ heroku create [NAMA_APP]
 $ git push heroku main
 
-$ heroku run python manage.py migrate
-$ heroku open
+$ heroku run python bot.py
 ```
-or
+atau
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
-
-## Documentation
-
-For more information about using Python on Heroku, see these Dev Center articles:
-
-- [Python on Heroku](https://devcenter.heroku.com/categories/python)
